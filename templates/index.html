@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="10">
+    <title>PCS 2025</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            width: 80%;
+        }
+        .row {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            width: 100%;
+        }
+        .right-align {
+            justify-content: flex-end;
+        }
+        .box {
+            width: 150px;
+            height: 120px;
+            background-color: #f8f9fa;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: 14px;
+            padding: 10px;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+        }
+        .vs-text {
+            font-weight: bold;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>
+        PCS 2025
+    </h1>
+    <br>
+    <div class="container">
+        <!-- Row 1 (4 boxes) -->
+        <div class="row">
+            {% for i in range(4) %}
+                <div class="box">
+                    <strong>{{ data[i][0] }}</strong>  <!-- Column A in bold -->
+                    <br>  <!-- Blank line -->
+                    <div>{{ data[i][1] }}</div>
+                    <br> 
+                    <div>{{ data[i][2] }}</div>  <!-- Column C -->
+                    <div class="vs-text">vs</div>
+                    <div>{{ data[i][3] }}</div>  <!-- Column D -->
+                </div>
+            {% endfor %}
+        </div>
+
+        <!-- Row 2 (5 boxes) -->
+        <div class="row">
+            {% for i in range(4, 9) %}
+                <div class="box">
+                    <strong>{{ data[i][0] }}</strong>
+                    <br>
+                    <div>{{ data[i][1] }}</div>
+                    <br> 
+                    <div>{{ data[i][2] }}</div>
+                    <div class="vs-text">vs</div>
+                    <div>{{ data[i][3] }}</div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <!-- Row 3 (1 right-aligned box) -->
+        <div class="row right-align">
+            {% if data|length > 9 %}
+            <div class="box">
+                <strong>{{ data[9][0] }}</strong>
+                <br>
+                <div>{{ data[9][1] }}</div>
+                <br> 
+                <div>{{ data[9][2] }}</div>
+                <div class="vs-text">vs</div>
+                <div>{{ data[9][3] }}</div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
